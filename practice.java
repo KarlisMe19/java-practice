@@ -17,9 +17,23 @@ public class practice {
         System.out.println(doubleNum);
 // Beginner
 // Print numbers 1–100, but replace multiples of 3 with "Fizz", multiples of 5 with "Buzz", and multiples of both with "FizzBuzz"
+        int[] number = new int[20];
+
+        for (int i = 0; i < 20; i++){
+            System.out.println(i);
+            number[i] = i+1;
+        }
+        for (int i = 0; i < number.length; i++){
+            if (i == 19){
+            System.out.print(number[i]);
+            }
+            else {
+            System.out.print(number[i] + "-");
+            }
+        }
 // Check if a number is even or odd
 // Find the largest of three numbers
 // Calculate the factorial of a number
 // Reverse a string
-    }
+}
 }
