@@ -1,3 +1,4 @@
+import java.text.NumberFormat;
 import java.util.Scanner;
 
 class MortgageCalculator{
@@ -8,26 +9,31 @@ class MortgageCalculator{
     //Period (Years)
     //Mortgage
 
-    final int percentNum = 100;
     System.out.print("Please enter a principal amount: ");
     Scanner scanner1 = new Scanner(System.in);
     float principalAmount = scanner1.nextFloat();
 
-    System.out.print("Please enter an annual interest rate (write in decimal form only): ");
+    System.out.print("Please enter an annual interest rate: ");
     Scanner scanner2 = new Scanner(System.in);
     float annualInterestRate = scanner2.nextFloat();
-    annualInterestRate += 1;
+    annualInterestRate /= 100;
 
     System.out.print("Please enter how many years: ");
     Scanner scanner3 = new Scanner(System.in);
     int yearPeriod = scanner3.nextInt();
 
+    NumberFormat yearlyInterestRate = NumberFormat.getPercentInstance();
+    String displayAnnualInterestRate = yearlyInterestRate.format(annualInterestRate);
     
-    float mortgage = principalAmount * annualInterestRate * yearPeriod;
-    int displayAnnualInterestRate = Math.round((annualInterestRate - 1) * percentNum);
+    float displayPrincipalAmount = principalAmount;
+    float mortgage = 0;
+    for(int i = 0; i < yearPeriod; i++){
+    principalAmount += principalAmount * (annualInterestRate);
+    mortgage = principalAmount;
+    }
 
-    System.out.println("Your Principal Amount is: " + principalAmount);
-    System.out.println("Your Annual Interest Rate is: " + displayAnnualInterestRate + "%");
+    System.out.println("Your Principal Amount is: " + displayPrincipalAmount);
+    System.out.println("Your Annual Interest Rate is: " + displayAnnualInterestRate);
     System.out.println("Your Year Period is: " + yearPeriod);
     System.out.println("Your Mortgage is: " + mortgage);
 
